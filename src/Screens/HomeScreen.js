@@ -67,8 +67,8 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.icon1}></View>
-        <Icon name="menu" color={colors.white} size={40} />
+        <View style={styles.icon1}>
+        <Icon name="menu" color={colors.white} size={40} /></View>
       </View>
 
       <ScrollView bounces={false}>
@@ -78,7 +78,7 @@ const HomeScreen = ({navigation}) => {
           <View style={styles.view1}>
             <View style={styles.view8}>
               <Text style={styles.text2}>Stare Out of the window</Text>
-              <TouchableOpacity onPress={() => navigation.navigate("RequestScreen")}>
+              <TouchableOpacity onPress={() => navigation.navigate("DriverScreen")}>
             <View style={styles.button1}>
                 <Text style={styles.button1Text}>Ride with us</Text>
               </View>
@@ -338,6 +338,7 @@ const styles = StyleSheet.create({
         },
     
     icon1:  {marginLeft:10,
+            paddingLeft: 1,
            marginTop:5
           },
 

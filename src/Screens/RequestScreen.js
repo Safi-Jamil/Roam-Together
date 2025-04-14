@@ -1,14 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View, Text, Image, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../Global/Styles';
 import { Icon } from 'react-native-elements';
+import { OriginContext, DestinationContext } from '../../src/Context/Context';
+import {Reducer} from '../../src/Reducers/Reducers'
+import MapComponent from '../../src/Components/MapComponent'
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
+
+
 export default function RequestScreen() {
+  
+  const { origin, dispatchOrigin } = useContext(OriginContext);
+  const [userOrigin, setUserOrigin] = useState({ 
+    latitude: origin?.latitude || 0, 
+    longitude: origin?.longitude || 0 
+  });  
+
+  const { destination, dispatcDestination } = useContext(DestinationContext);
+  const [userDestination, setUserDestination] = useState({ 
+    latitude: destination?.latitude || 0, 
+    longitude: destination?.longitude || 0 
+  });  
+  useEffect(()=>{
+    setUserOrigin({ 
+      latitude: origin?.latitude || 0, 
+      longitude: origin?.longitude || 0 
+    })
+
+    setUserDestination({ 
+      latitude: destination?.latitude || 0, 
+      longitude: destination?.longitude || 0 
+    })
+  }, [origin, destination])
+ 
   const navigation = useNavigation();  // Use useNavigation hook here
   const [fromLocation, setFromLocation] = useState(null);
   const [toLocation, setToLocation] = useState(null);
@@ -60,6 +89,7 @@ export default function RequestScreen() {
         {fromLocation && <Marker coordinate={fromLocation} title="From" />}
         {toLocation && <Marker coordinate={toLocation} title="To" />}
       </MapView>
+      <MapComponent userOrigin={userOrigin} userDestination = {userDestination}/>
     </View>
   );
 }

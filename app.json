@@ -8,38 +8,51 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.Roam-Together",
-      "config": {"googleMapsApiKey": "AIzaSyBd4focIowlq54oN8D4Lz9jQIDcVAr4u2K"}
+      "config": {
+        "googleMapsApiKey": "AIzaSyCVguEaqJymKhwOMS1zsUZZ4z1Gmu_zfxA"
+      }
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-
       "package": "com.roamtogether.app",
-      "config": {"googleMaps": {"apiKey": "AIzaSyBd4focIowlq54oN8D4Lz9jQIDcVAr4u2K"}},
-      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION", "FOREGROUND_SERVICE"]
-
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCVguEaqJymKhwOMS1zsUZZ4z1Gmu_zfxA"
+        }
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "FOREGROUND_SERVICE",
+        "ACCESS_BACKGROUND_LOCATION"
+      ]
     },
+
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
-  "plugins": [
-  [
-    "expo-splash-screen",
-    {
-      "image": "./assets/images/splash-icon.png",
-      "imageWidth": 200,
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    }
-  ]
-],
+
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
+    ],
 
     "experiments": {
       "typedRoutes": true
